@@ -1,0 +1,74 @@
+﻿
+@model Sheet5.Models.Order
+
+@using Sheet5.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2>Welcome to StarSubs!</h2>
+
+
+<Form method="post">
+
+
+    <!--Html.DropDownList("type", new SelectList(Enum.GetValues(typeof(SubType))), "Enter a pizza type")
+
+    Html.DropDownListFor(m => m.type, "Enter a pizza type")
+
+      Html.ValidationMessage("Pizza type is required")
+
+      Html.ValidationMessageFor(Model => Model.SelectedOptionID)
+
+        -->
+
+
+    @Html.DropDownListFor(m => m.type, new SelectList(Enum.GetValues(typeof(SubType))), "Enter a pizza type")
+
+    @Html.ValidationMessageFor(Model => Model.type)
+
+
+
+
+    @Html.DropDownList("size", new SelectList(Enum.GetValues(typeof(SubSize))), "Enter a pizza size")
+
+
+
+
+    @Html.ValidationMessage("Pizza size is required")
+
+
+    Quantity: <input type="number" name="quantity" required />
+
+    <br />
+    <br />
+
+    <p>Select a Meal Deal</p>
+
+    @Html.RadioButtonFor(m => m.deal, "none", new { @checked = true }) None
+
+    @Html.RadioButtonFor(m => m.deal, "chips") Drink and Chips
+
+    @Html.RadioButtonFor(m => m.deal, "cookies")Drink and Coockies
+
+
+    <br /><br />
+
+    <input type="submit" />
+
+
+</Form>
+
+<br /><br />
+@Html.ActionLink("See Total Sales", "Sales")
+
+<!--Html.DropDownListFor(c => c.type, Enum.GetValues(typeof(SubType)).Cast<SubType>
+    ().Select(c => new new
+
+
+
+    SelectList(Enum.GetValues(typeof(SubType))), "Select Type")
+    -->

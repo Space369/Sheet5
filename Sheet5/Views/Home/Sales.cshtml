@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Sales";
+}
+
+@using Sheet5.Models
+
+
+<h2>Sales</h2>
+
+
+
+@{
+
+    Double TotalTax = 0;
+    Double TotalIncome = 0;
+
+
+    if (Session["OrderList"] != null)
+    {
+
+        var SaleList = Session["OrderList"] as List<Order>;
+
+        foreach (var Order in SaleList)
+        {
+
+            TotalTax += Order.tax;
+            TotalIncome += Order.total;
+
+
+
+
+
+            <table style="width:100%">
+                <tr>
+
+                    <th>Field</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td>Type of pizza:</td>
+                    <td>@Order.type</td>
+                </tr>
+                <tr>
+                    <td>Size of pizza</td>
+                    <td>@Order.size</td>
+                </tr>
+                <tr>
+                    <td>Type of Meal Deal</td>
+                    <td>@Order.deal</td>
+                </tr>
+                <tr>
+                    <td>Quantity:</td>
+                    <td>@Order.quantity</td>
+                </tr>
+                <tr> 
+                    <td>Tax:</td>
+                    <td>@Order.tax.ToString("C2")</td>
+                </tr>
+                <tr>
+                    <td>Total Due:</td>
+                    <td>@Order.total.ToString("C2")</td>
+                </tr>
+            </table>
+            <br />
+
+        }
+
+
+        <br />
+        <br />
+        <br />
+        <table style="width:100%">
+            <tr>
+
+                <th>Grant Total For The Day</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Total Tax:</td>
+                <td>@TotalTax.ToString("C2")</td>
+            </tr>
+            <tr>
+                <td>Total Income:</td>
+                <td>@TotalIncome.ToString("C2")</td>
+            </tr>
+        </table>
+        <br />
+        @Html.ActionLink("Go back Home", "Index");
+    }
+
+    else
+    {
+
+
+        <h4>No orders taken yet</h4>
+        <br />
+        @Html.ActionLink("Go back Home", "Index")
+    }
+}

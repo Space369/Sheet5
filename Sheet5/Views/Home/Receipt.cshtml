@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Receipt";
+}
+
+<h2>StarSubs Receipt</h2>
+<h3>Today's Date: Wednesday, Sept</h3>
+<br />
+
+<table style="width:100%">
+    <tr>
+        <th>Field</th>
+        <th>Result</th>
+
+    </tr>
+    <tr>
+        <td>Type of pizza:</td>
+        <td>@ViewBag.TypeName</td>
+
+    </tr>
+    <tr>
+        <td>Size of pizza</td>
+        <td>@ViewBag.SizeName</td>
+    </tr>
+    <tr>
+        <td>Type of Meal Deal</td>
+        <td>@ViewBag.DealName</td>
+    </tr>
+    <tr>
+        <td>Total Price of Sub:</td>
+        <td>@ViewBag.TotalPizza.ToString("C2")</td>
+    </tr>
+    <tr>
+        <td>Price of Meal Deal:</td>
+        <td>@ViewBag.TotalDeal.ToString("C2")</td>
+    </tr>
+
+
+    <tr>
+        <td>Individual Cost:</td>
+        <td>@ViewBag.Cost.ToString("C2")</td>
+    </tr>
+
+    <tr>
+        <td>Quantity:</td>
+        <td>@ViewBag.Quantity</td>
+    </tr>
+
+    <tr>
+        <td>Sub Total:</td>
+        <td>@ViewBag.SubTotal.ToString("C2")</td>
+    </tr>
+
+    <tr>
+        <td>Tax:</td>
+        <td>@ViewBag.Tax.ToString("C2")</td>
+    </tr>
+    <tr>
+        <td>Total Due:</td>
+        <td>@ViewBag.Total.ToString("C2")</td>
+    </tr>
+
+
+
+</table>
+
+<br />
+@Html.ActionLink("Place another order", "Index") 
+
